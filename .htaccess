@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# リクエストされたファイルが存在しない場合にのみ、次のRewriteルールを適用
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# すべてのリクエストを/index.cgiにリダイレクト
+RewriteRule ^(.*)$ /index.cgi/$1 [QSA,L]
+
+<Files ~ "\.py$">
+  deny from all
+</Files>
